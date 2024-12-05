@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Conformidad RD 1367/2007</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Conformidad RD 1367/2007</h1>
+        
+        <div class="input-group">
+            <label for="escenario">Escenario:</label>
+            <select id="escenario">
+                <option value="Exterior">Exterior</option>
+                <option value="Interior">Interior</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Ponderación:</label>
+            <div class="radio-group">
+                <input type="radio" id="ponderacionA" name="ponderacion" value="A" checked>
+                <label for="ponderacionA">A</label>
+                <input type="radio" id="ponderacionC" name="ponderacion" value="C">
+                <label for="ponderacionC">C</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="nivelInmision">Nivel de inmisión de ruido (dB):</label>
+            <input type="number" id="nivelInmision" step="0.1" required>
+        </div>
+
+        <div class="input-group">
+            <label for="nivelFondo">Nivel de ruido de fondo (dB):</label>
+            <input type="number" id="nivelFondo" step="0.1" required>
+        </div>
+
+        <div class="input-group">
+            <label for="nivelLimite">Nivel límite (dB):</label>
+            <input type="number" id="nivelLimite" step="0.1" required>
+        </div>
+
+        <button onclick="calcular()">Calcular</button>
+
+        <div id="resultado" class="result"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+</body>
+</html>
