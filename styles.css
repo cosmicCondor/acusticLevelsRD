@@ -10,15 +10,16 @@ body {
 .container {
   max-width: 600px;
   margin: auto;
-  background: #fff;
+  background: #ffffff;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
   color: #2c3e50;
+  margin-bottom: 20px;
 }
 
 .input-group {
@@ -33,7 +34,7 @@ label {
 
 input[type="number"], select {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box;
@@ -55,8 +56,8 @@ input[type="number"], select {
 button {
   display: block;
   width: 100%;
-  padding: 10px;
-  background-color: #3498db;
+  padding: 12px;
+  background-color: #3498db; /* Azul */
   color: white;
   border: none;
   border-radius: 4px;
@@ -65,49 +66,60 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #2980b9; /* Azul más oscuro */
 }
 
 .result {
   margin-top: 20px;
   padding: 10px;
-  background-color: #ecf0f1;
+  background-color: #ecf0f1; /* Gris claro */
   border-radius: 4px;
 }
 
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo */
+  z-index: 1; /* Por encima de otros elementos */
+  left: 0; /* A la izquierda */
+  top: 0; /* Arriba */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Desplazamiento automático si es necesario */
+  background-color: rgba(0,0,0,0.5); /* Fondo oscuro con opacidad */
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 5px;
+  background-color: #fefefe; /* Fondo blanco */
+  margin: auto; /* Centrado */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  width: 80%; /* Ancho del modal */
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+  color: #aaa; /* Color gris claro */
+  float: right; /* A la derecha */
+  font-size: 28px; /* Tamaño de fuente grande */
+  font-weight: bold; /* Negrita */
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+  color: black; /* Color negro al pasar el mouse */
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+ .container {
+     padding-left: 10px; 
+     padding-right: 10px; 
+ }
+
+ button {
+     font-size: 18px; 
+ }
+
+ h1 {
+     font-size: 24px; 
+ }
 }
