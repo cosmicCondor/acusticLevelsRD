@@ -1,32 +1,43 @@
 function calcular() {
-  const nivelInmision = parseFloat(document.getElementById('nivelInmision').value);
-  const nivelFondo = parseFloat(document.getElementById('nivelFondo').value);
-  const nivelLimite = parseFloat(document.getElementById('nivelLimite').value);
+    const nivelInmision = parseFloat(document.getElementById('nivelInmision').value);
+    const nivelFondo = parseFloat(document.getElementById('nivelFondo').value);
+    const nivelLimite = parseFloat(document.getElementById('nivelLimite').value);
+    const tipoMedida = document.getElementById('tipoMedida').value;
 
-  if (isNaN(nivelInmision) || isNaN(nivelFondo) || isNaN(nivelLimite)) {
-      document.getElementById('resultado').innerText = "Por favor, ingrese todos los valores.";
-      return;
-  }
+    if (isNaN(nivelInmision) || isNaN(nivelFondo) || isNaN(nivelLimite)) {
+        document.getElementById('resultado').innerText = "Por favor, ingrese todos los valores.";
+        return;
+    }
 
-  let nivelCorregido;
+    let nivelCorregido;
+    let nivelLimiteAjustado;
 
-  try {
-      nivelCorregido = 10 * Math.log10(Math.pow(10, nivelInmision / 10) - Math.pow(10, nivelFondo / 10));
-      
-      if (isNaN(nivelCorregido) || nivelCorregido === -Infinity) throw new Error();
-      
-      let conformidad = nivelCorregido <= nivelLimite ? "Conforme" : "No conforme";
-      
-      document.getElementById('resultado').innerHTML = `
-          <strong>Nivel corregido:</strong> ${nivelCorregido.toFixed(2)} dB<br>
-          <strong>Resultado:</strong> ${conformidad}
-      `;
+    try {
+        nivelCorregido = 10 * Math.log10(Math.pow(10, nivelInmision / 10) - Math.pow(10, nivelFondo / 10));
+        
+        if (isNaN(nivelCorregido) || nivelCorregido === -Infinity) throw new Error();
+        
+        // Ajuste del nivel límite según el tipo de medida
+        if (tipoMedida === 'puntual') {
+            nivelLimiteAjustado = nivelLimite + 5;
+        } else {
+            nivelLimiteAjustado = nivelLimite + 3;
+        }
 
-      mostrarModal(conformidad);
-  } catch (e) {
-      document.getElementById('resultado').innerText = "Error en el cálculo. Verifique los valores ingresados.";
-  }
+        let conformidad = nivelCorregido <= nivelLimiteAjustado ? "Conforme" : "No conforme";
+        
+        document.getElementById('resultado').innerHTML = `
+            <strong>Nivel corregido:</strong> ${nivelCorregido.toFixed(2)} dB<br>
+            <strong>Nivel límite ajustado:</strong> ${nivelLimiteAjustado.toFixed(2)} dB<br>
+            <strong>Resultado:</strong> ${conformidad}
+        `;
+
+        mostrarModal(conformidad);
+    } catch (e) {
+        document.getElementById('resultado').innerText = "Error en el cálculo. Verifique los valores ingresados.";
+    }
 }
+
 
 function mostrarModal(conformidad) {
   const modal = document.getElementById("modal");
