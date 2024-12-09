@@ -22,23 +22,23 @@ Esta aplicación web implementa una algoritmo para evaluar la conformidad acúst
 
 ## Funciones Clave
 
-### `Cambio de escenario`
+### `cambiarEscenario()`
 Alterna dinámicamente entre los formularios de entrada para escenarios exteriores e interiores.
 
-### `Cálculo de la componente frecuencial`
+### `calcularComponenteFrecuencial(nivelCorregidoA, nivelCorregidoC)`
 Determina la penalización por componente frecuencial basada en la diferencia entre niveles corregidos en ponderaciones A y C.
 
-### `Cálculo de la componente impulsiva`
+### `calcularComponenteImpulsiva(nivelImpulsivoA, nivelInmisionA)`
 Calcula la penalización por componente impulsiva comparando el nivel impulsivo con el nivel de inmisión sonora.
 
-### `Cálculo principal`
+### `calcular()`
 Función principal que:
 1. Recopila datos de entrada.
 2. Calcula niveles corregidos y componentes acústicas.
 3. Determina la conformidad con los límites establecidos.
 4. Muestra resultados detallados.
 
-### `Cálculo del nivel corregido`
+### `calcularNivelCorregido(nivelInmision, nivelFondo)`
 Aplica la corrección logarítmica para el nivel de ruido de fondo.
 
 ## Aspectos Técnicos Relevantes
