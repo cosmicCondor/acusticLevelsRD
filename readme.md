@@ -61,3 +61,4 @@ Aplica la corrección logarítmica para el nivel de ruido de fondo.
 - Expansión para incluir más escenarios o normativas acústicas.
 
 
+Herramienta desarrolada por Mario Fernández y Joan Aristizábal.

@@ -10,6 +10,9 @@ function cambiarEscenario() {
         medicionExterior.style.display = 'none';
         medicionInterior.style.display = 'block';
     }
+
+    document.getElementById('resultado').innerHTML = `
+    `;
 }
 
 function calcularComponenteFrecuencial(nivelCorregidoA, nivelCorregidoC) {
@@ -83,16 +86,23 @@ function calcular() {
     nivelLimiteAjustado = tipoMedida === 'puntual' ? nivelLimite + 5 : nivelLimite + 3;
 
     let conformidad = nivelCorregido <= nivelLimiteAjustado ? "Conforme" : "No conforme";
-    
-    document.getElementById('resultado').innerHTML = `
-        <strong>Nivel corregido:</strong> ${nivelCorregido.toFixed(2)} dB<br>
-        <strong>Componente frecuencial:</strong> ${componenteFrecuencial} dB<br>
-        <strong>Componente impulsiva:</strong> ${componenteImpulsiva} dB<br>
-        <strong>Componente tonal:</strong> 6 dB<br>
-        <strong>Nivel límite ajustado:</strong> ${nivelLimiteAjustado.toFixed(2)} dB<br>
+    if (escenario === 'Exterior') {
+        document.getElementById('resultado').innerHTML = `
+        <strong>Nivel corregido (LAeq,d):</strong> ${nivelCorregido.toFixed(2)} dBA<br>
+        <strong>Nivel límite ajustado (Ld):</strong> ${nivelLimiteAjustado.toFixed(2)} dBA<br>
         <strong>Resultado:</strong> ${conformidad}
-    `;
-
+    `
+    } else if (escenario === 'Interior') {
+        document.getElementById('resultado').innerHTML = `
+            <strong>Nivel corregido (LKeq,d):</strong> ${nivelCorregido.toFixed(2)} dBA<br>
+            <strong>Componente frecuencial:</strong> ${componenteFrecuencial} dB<br>
+            <strong>Componente impulsiva:</strong> ${componenteImpulsiva} dB<br>
+            <strong>Componente tonal:</strong> 6 dB<br>
+            <strong>Nivel límite ajustado (LKeq,d):</strong> ${nivelLimiteAjustado.toFixed(2)} dBA<br>
+            <strong>Resultado:</strong> ${conformidad}
+        `;
+    }
+    ;
     mostrarModal(conformidad);
 }
 
